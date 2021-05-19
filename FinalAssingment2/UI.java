@@ -4,6 +4,10 @@ import java.util.Scanner;
 // displays the menu and gets user input which it returns to the Driver class.
 public class UI {
 
+    public UI() {
+        System.out.println("Welcome to Grade Manager, please select from menu options below:");
+    }
+
     public int displayMenu() {
         System.out.println("(1) display grades");
         System.out.println("(2) Find average grade");
@@ -22,5 +26,9 @@ public class UI {
         }
 
         return menuNumber;
+    }
+
+    public void quitProgram() {
+        System.out.println("You have quit the program.");
     }
 }

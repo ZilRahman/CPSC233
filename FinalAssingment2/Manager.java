@@ -15,7 +15,7 @@ public class Manager {
     // utilities.
     public void makeGrades() {
         Random randomGrades = new Random();
-        grades = new float[30];
+        grades = new float[40];
 
         // assings first ten grades 2.0
         for (int i = 0; i < 10; i++) {
@@ -26,7 +26,7 @@ public class Manager {
         }
 
         // randomizes thirty grades totalling grades to a float list of forty.
-        for (int i = 0; i < grades.length; i++) {
+        for (int i = 10; i < grades.length; i++) {
             grades[i] = (float) (randomGrades.nextInt(40 - 0 + 0) + 0) / (float) 10.0;
 
             System.out.println(grades[i]);
