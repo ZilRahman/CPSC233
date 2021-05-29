@@ -1,5 +1,5 @@
 /**
- * Entity class. Contains an appeareance attribute.
+ * Entity class. Contains an appearance attribute.
  */
 public class Entity {
 
