@@ -1,3 +1,6 @@
+// Class World is responsible for instantiating the 2d array (5x5) and placing 
+// on entity object inside. It's method also places an entity wherever the user
+// wishes to place and displays the new world using another printWorld() method.
 
 public class World {
 
@@ -11,6 +14,8 @@ public class World {
 
     private Entity thing;
 
+    // World() constructor sets all the starting values in the 2d array to null and
+    // instantiates array.
     public World() {
 
         thing = new Entity();
@@ -26,6 +31,7 @@ public class World {
 
     }
 
+    // getAppearance() resets old entity object so previous area is null in 2d array
     public void getAppearance() {
 
         world[oldRow][oldColumn] = thing;
@@ -43,6 +49,8 @@ public class World {
         oldColumn = column;
     }
 
+    // printWorld() is responsible for displaying the 2d array and the object Entity
+    // within.
     public void printWorld() {
 
         for (r = 0; r < SIZE; r++) {

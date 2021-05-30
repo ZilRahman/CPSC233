@@ -1,5 +1,7 @@
 import java.util.Scanner;
 
+// Class Driver is responsible for running the code amd getting user input then calling appropriate 
+// method from World class and displaying the 2d array.
 public class Driver {
     public static void main(String[] args) {
         World earth = new World();
