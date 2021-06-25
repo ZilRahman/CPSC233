@@ -1,5 +1,8 @@
 public class Simulator {
+
     public static void main(String[] args) {
-        FileInitialization.read();
+
+        Entity[][] myEntityArray = FileInitialization.read();
+        World myWorld = new World(myEntityArray);
     }
 }
