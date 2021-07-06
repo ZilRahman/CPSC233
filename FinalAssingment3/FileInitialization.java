@@ -21,18 +21,18 @@ public class FileInitialization {
                 for (int i = 0; i < SIZE; i++) {
                     if (newElements[i].equals("O")) {
                         // Make O entity
-                        System.out.println("O at" + rowNumber + " " + i);
+                        // System.out.println("O at" + rowNumber + " " + i);
                         Entity Orc = new Entity("O", 10);
                         MyEntityArray[rowNumber][i] = Orc;
                     } else if (newElements[i].equals("D")) {
                         // Make D entity
-                        System.out.println("D at" + rowNumber + " " + i);
+                        // System.out.println("D at" + rowNumber + " " + i);
                         Entity Dwarf = new Entity("D", 15);
                         MyEntityArray[rowNumber][i] = Dwarf;
                     }
                 }
 
-                System.out.println("Line num " + rowNumber);
+                // System.out.println("Line num " + rowNumber);
                 rowNumber++;
             }
             myReader.close();
