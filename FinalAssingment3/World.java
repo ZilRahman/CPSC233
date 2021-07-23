@@ -73,11 +73,16 @@ public class World {
         // move dwarf
         if (newRow > 0 & newCol > 0) {
 
-            // move dwarf
-            if (newEntityArray[newRow][newCol] == null) {
+            // Check for orcs around you
+            checkNeighborsDwarf(r, c, dwarf); // checking neighbors
+            if (checkNeighborsDwarf(r, c, dwarf) == true) {
+                newEntityArray[r][c] = dwarf;
+            }
+
+            // Move dwarf only if there is no neighbours and no dwarf where u are headed.
+            else if (newEntityArray[newRow][newCol] == null) {
                 newEntityArray[newRow][newCol] = dwarf;
                 // checkNeighborsDwarf(r, c, dwarf); // checking neighbors
-                // oldEntityArray[r][c] = null;
             } else {
                 newEntityArray[r][c] = dwarf;
             }
@@ -132,80 +137,78 @@ public class World {
     }
 
     // the new entity array is the same as the one in moveDwarf function?
-    private void checkNeighborsDwarf(int r, int c, Entity dwarf) {
+    private boolean checkNeighborsDwarf(int r, int c, Entity dwarf) {
         // left side Orc neighbor
         if (r >= 0 & c - 1 >= 0) {
             if (oldEntityArray[r][c - 1] != null) {
                 if (oldEntityArray[r][c - 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
         // right side Orc neighbor
-        else if (r <= 9 & c + 1 <= 9) {
+        if (r <= 9 & c + 1 <= 9) {
             if (oldEntityArray[r][c + 1] != null) {
                 if (oldEntityArray[r][c + 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
 
                 }
             }
         }
         // top neighbor
-        else if (r - 1 >= 0 & c >= 0) {
+        if (r - 1 >= 0 & c >= 0) {
             if (oldEntityArray[r - 1][c] != null) {
                 if (oldEntityArray[r - 1][c].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
         // bottom neighbor
-        else if (r + 1 >= 9 & c >= 9) {
+        if (r + 1 >= 9 & c >= 9) {
             if (oldEntityArray[r + 1][c] != null) {
                 if (oldEntityArray[r + 1][c].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
 
         // top left neighbor
-        else if (r - 1 >= 0 & c - 1 >= 0) {
+        if (r - 1 >= 0 & c - 1 >= 0) {
             if (oldEntityArray[r - 1][c - 1] != null) {
                 if (oldEntityArray[r - 1][c - 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
 
         // top right neighbor
-        else if (r - 1 >= 9 & c + 1 >= 9) {
+        if (r - 1 >= 9 & c + 1 >= 9) {
             if (oldEntityArray[r - 1][c + 1] != null) {
                 if (oldEntityArray[r - 1][c + 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
 
         // bottom left neighbor
-        else if (r + 1 >= 9 & c - 1 >= 9) {
+        if (r + 1 >= 9 & c - 1 >= 9) {
             if (oldEntityArray[r + 1][c - 1] != null) {
                 if (oldEntityArray[r + 1][c - 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
 
         // bottom right neighbor
-        else if (r + 1 >= 9 & c + 1 >= 9) {
+        if (r + 1 >= 9 & c + 1 >= 9) {
             if (oldEntityArray[r + 1][c + 1] != null) {
                 if (oldEntityArray[r + 1][c + 1].getAppearance().equals("O")) {
-                    newEntityArray[r][c] = dwarf;
+                    return true;
                 }
             }
         }
 
-        else {
-            newEntityArray[r][c] = dwarf;
-        }
+        return false;
     }
 
 }
