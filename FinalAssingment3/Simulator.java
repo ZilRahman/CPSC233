@@ -12,10 +12,15 @@ public class Simulator {
         String userDecision = in.nextLine();
 
         while (!userDecision.equals("n")) {
-            myWorld.displayWorld();
+
             myWorld.traverseWorld();
-            myWorld.displayWorld();
+
             in.nextLine();
+
+            if (userDecision.equals("n")) {
+                // end simulation
+                System.out.println("no works");
+            }
         }
 
         // if (userDecision.equals("y")) {
