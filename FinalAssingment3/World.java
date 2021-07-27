@@ -46,13 +46,10 @@ public class World {
                 if (newEntityArray[r][c] != null) {
                     if (newEntityArray[r][c].getAppearance().equals("O")) {
 
-                        // i am an orc
+                        // Orc attack and health analysis run round-by-round
                         boolean neighborFound = checkNeighborsOrc(r, c, newEntityArray[r][c]);
                         if (neighborFound) {
-                            // capturing return value of attack point
 
-                            // HAVE TO CAPTURE DWARFS DAMAGE POINT
-                            // generateAttackOrc();
                             int orcAttackHit = generateAttackDwarf();
                             int orcHealth = newEntityArray[r][c].getHealth();
                             orcHealth = orcHealth - orcAttackHit;
@@ -66,7 +63,24 @@ public class World {
                             }
                         }
                     } else {
-                        // i am a dwarf
+                        // Dwarf attack and health analysis run round-by-round
+
+                        boolean neighborFound = checkNeighborsDwarf(r, c, newEntityArray[r][c]);
+
+                        if (neighborFound) {
+                            int dwarfAttackHit = generateAttackOrc();
+                            int dwarfHealth = newEntityArray[r][c].getHealth();
+                            dwarfHealth = dwarfHealth - dwarfAttackHit;
+                            newEntityArray[r][c].setHealth(dwarfHealth);
+                            System.out.println("Dwarf health: " + dwarfHealth);
+
+                            // if health of orcs fall or equals below zero
+                            if (dwarfHealth <= 0) {
+                                System.out.println("a Dwarf has fallen");
+                                newEntityArray[r][c] = null;
+                            }
+
+                        }
                     }
                 }
             }
@@ -114,15 +128,9 @@ public class World {
             // Check for orcs around dwarves
             if (checkNeighborsDwarf(r, c, dwarf) == true) {
                 newEntityArray[r][c] = dwarf;
-                // Generate attack for dwarf
-
-                // int dwarfAttackHit = generateAttackOrc();
-                // int dwarfHealth = 15 - dwarfAttackHit;
-                // System.out.println("dwarf health is: " + dwarfHealth);
-
             }
 
-            // Move dwarf only if there is no neighbors and no dwarf where u are headed.
+            // Move dwarf only if there is no neighbors and no dwarf where you are headed.
             else if (newEntityArray[newRow][newCol] == null) {
                 newEntityArray[newRow][newCol] = dwarf;
             } else {
