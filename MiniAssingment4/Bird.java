@@ -1,5 +1,7 @@
 // child class Bird for mini-assignment 4
 public class Bird extends Animal {
+    private int range = 400;
+
     public void walk() {
         System.out.println("Walking like a bird!");
         energy = energy - 3;
