@@ -1,22 +1,26 @@
 public class Entity {
     private String appearance;
-    private int hitPoint;
+    private int health;
 
     public Entity() {
         this.appearance = "E";
-        this.hitPoint = 0;
+        this.health = 0;
     }
 
-    public Entity(String appearance, int hitPoint) {
+    public Entity(String appearance, int health) {
         this.appearance = appearance;
-        this.hitPoint = hitPoint;
+        this.health = health;
     }
 
     public String getAppearance() {
         return appearance;
     }
 
-    public int getHitPoint() {
-        return hitPoint;
+    public int getHealth() {
+        return health;
+    }
+
+    public void setHealth(int health) {
+        this.health = health;
     }
 }

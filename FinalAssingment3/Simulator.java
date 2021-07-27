@@ -23,27 +23,6 @@ public class Simulator {
             }
         }
 
-        // if (userDecision.equals("y")) {
-        // // continue the simulation
-        // System.out.println("yes works");
-        // myWorld.displayWorld();
-        // myWorld.traverseWorld();
-        // myWorld.displayWorld();
-        // in.nextLine();
-        // }
-
-        // else if (userDecision.equals("n")) {
-        // // end simulation
-        // System.out.println("no works");
-        // }
-
-        // else if (!userDecision.equals("y") || !userDecision.equals("n")) {
-        // // not the right selection
-        // System.out.println("Not the right selection! Please enter either yes(y) or
-        // no(n).");
-        // in.nextLine();
-        // }
-
         in.close();
     }
 }
