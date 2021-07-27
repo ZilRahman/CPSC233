@@ -14,6 +14,6 @@ public class Bird extends Animal {
     }
 
     public String toString() {
-        return super.toString() + "\n" + "I'm a bird.";
+        return super.toString() + "\n" + "I'm a bird and my range is " + range;
     }
 }
