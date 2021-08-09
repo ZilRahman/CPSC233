@@ -2,6 +2,40 @@ import java.util.*;
 
 public class UserInterface {
 
+    Manager aManager;
+
+    public UserInterface(Manager aManager) {
+        this.aManager = aManager;
+    }
+
+    public void displayMenu() {
+        String movieName = getMovieName();
+        String[] castMembers = getCast();
+        String movieGenre = getGenre();
+        int movieRating = getRating();
+
+        Movie aMovie = new Movie(movieName, castMembers, movieGenre, movieRating);
+        aManager.addMovie(aMovie);
+        repeatMenu();
+    }
+
+    // function to repeat menu upon user selection
+    public void repeatMenu() {
+        Scanner in = new Scanner(System.in);
+
+        System.out.println("Would you like to continue(y) or quit(n)?");
+        String userSelection = in.nextLine();
+
+        if (userSelection.equals("y")) {
+            System.out.println("You have chosen to continue!");
+            displayMenu();
+        } else {
+            System.out.println("You have chosen to quit!");
+
+        }
+
+    }
+
     // function to get movie name from user and return it.
     public String getMovieName() {
         System.out.println("Enter movie name: ");
@@ -9,8 +43,6 @@ public class UserInterface {
 
         String movieName = userMovieName.nextLine();
         System.out.println("Movie: " + movieName);
-
-        userMovieName.close();
 
         return movieName;
 
@@ -20,13 +52,16 @@ public class UserInterface {
     public String[] getCast() {
 
         String[] castMembers = new String[3];
+        Scanner in = new Scanner(System.in);
 
-        for (int i = 0; i == 3; i++) {
-            Scanner in = new Scanner(System.in);
-            System.out.println("Enter #" + i + " cast member (3 MAX): ");
+        int count = 1;
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println("Enter #" + count + " cast member (3 MAX): ");
             castMembers[i] = in.nextLine();
+            System.out.println("Cast #" + count + " " + castMembers[i]);
+            count++;
 
-            in.close();
         }
         return castMembers;
 
@@ -38,8 +73,8 @@ public class UserInterface {
         System.out.println("Which genre is this movie?:  ");
         Scanner in = new Scanner(System.in);
         String genreSelected = in.nextLine();
+        System.out.println("Movie Genre: " + genreSelected);
 
-        in.close();
         return genreSelected;
 
     }
@@ -50,7 +85,6 @@ public class UserInterface {
         Scanner in = new Scanner(System.in);
         int getRating = in.nextInt();
 
-        in.close();
         return getRating;
 
     }
