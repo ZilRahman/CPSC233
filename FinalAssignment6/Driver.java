@@ -15,7 +15,8 @@ public class Driver {
             System.out.println("(a)dd a movie to the collection");
             System.out.println("(d)isplay movie collection");
             System.out.println("(s)earch movie collection");
-            System.out.println("(r)emove");
+            System.out.println("(r)emove movie from collection");
+            System.out.println("(o)pposite order display");
             System.out.println("(q)uit the program");
             userChoice = userSelection.nextLine();
 
@@ -35,6 +36,11 @@ public class Driver {
             if (userChoice.equals("r")) {
                 // removes movie from list
                 aManager.removeMovie();
+            }
+            if (userChoice.equals("o")) {
+                // displays collection in opposite order
+                aManager.displayRecursive();
+
             }
         } while (!userChoice.equals("q"));
 

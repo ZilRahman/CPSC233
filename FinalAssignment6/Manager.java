@@ -13,6 +13,7 @@ public class Manager {
         this.head = head;
     }
 
+    // adds movie to linked list
     public void addMovie(Movie aMovie) {
         MovieNode aNode = new MovieNode(aMovie, null);
 
@@ -31,39 +32,43 @@ public class Manager {
         }
     }
 
+    // displays list
     public void displayMovie() {
 
         // displays list
-
-        if (head == null) {
+        MovieNode temp = head;
+        if (temp == null) {
             System.out.println();
             System.out.println("This list is empty, there is nothing to display.");
             System.out.println();
         }
-        while (head != null) {
+        while (temp != null) {
             System.out.println();
-            System.out.println(head.getData().getMovieName());
-            head.getData().getCastMembers();
-            System.out.println(head.getData().getGenre());
-            System.out.println(head.getData().getRating());
+            System.out.println(temp.getData().getMovieName());
+            temp.getData().getCastMembers();
+            System.out.println(temp.getData().getGenre());
+            System.out.println(temp.getData().getRating());
             System.out.println("************");
-            head = head.getNext();
-
+            temp = temp.getNext();
         }
 
     }
 
+    // searches for movie from list based on user input
     public void searchMovie() {
         Scanner in = new Scanner(System.in);
 
         if (head == null) {
+            System.out.println();
             System.out.println("Cannot invoke search: List is empty.");
         }
 
         else {
+            System.out.println();
             System.out.println("Which movie do you want to look for? (case sensitive): ");
             String userInput = in.nextLine();
             while (!head.getData().getMovieName().equals(userInput)) {
+                System.out.println();
                 System.out.println("Searching...");
                 head = head.getNext();
                 if (head.getData().getMovieName().equals(userInput)) {
@@ -81,10 +86,12 @@ public class Manager {
         }
     }
 
+    // removes user given movie from list
     public void removeMovie() {
 
         // empty list
         if (head == null) {
+            System.out.println();
             System.out.println("List is empty; nothing to remove");
         }
 
@@ -96,6 +103,7 @@ public class Manager {
             boolean isFound = false;
             String currentName;
             Scanner in = new Scanner(System.in);
+            System.out.println();
             System.out.println("Enter name of movie you want to remove: ");
             searchName = in.nextLine(); // user selects name
 
@@ -113,6 +121,7 @@ public class Manager {
             }
             // match found (remove movieNode)
             if (isFound == true) {
+                System.out.println();
                 System.out.println("Removing movie called " + searchName);
 
                 // remove first node
@@ -127,6 +136,7 @@ public class Manager {
             }
             // no matches found
             else {
+                System.out.println();
                 System.out.println("no movie called " + searchName + " in the collection.");
             }
 
@@ -134,4 +144,42 @@ public class Manager {
 
     }
 
+    // shows the list in opposite order
+    public void displayRecursive() {
+        MovieNode temp = head;
+
+        // empty list
+        if (temp == null) {
+            System.out.println("collection is empty; nothing to display");
+        }
+
+        // non-empty list
+        else {
+            int count = 1;
+            displayAndRecursive(temp, count);
+        }
+    }
+
+    // recursive function called from oppositeDisplay()
+    public void displayAndRecursive(MovieNode temp, int count) {
+
+        // Stop when end of list is reached
+        if (temp == null) {
+            return;
+        }
+
+        else {
+            // Display data and move onto next element
+            System.out.println();
+            System.out.println(temp.getData().getMovieName());
+            temp.getData().getCastMembers();
+            System.out.println(temp.getData().getGenre());
+            System.out.println(temp.getData().getRating());
+            System.out.println("************");
+            temp = temp.getNext(); // get address of next node
+            count++;
+            displayAndRecursive(temp, count); // recursive call is last call: tail recursion
+        }
+
+    }
 }
