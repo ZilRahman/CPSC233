@@ -9,13 +9,14 @@ public class Driver {
         String userChoice;
 
         do {
+            System.out.println();
             System.out.println("Welcome to movie organizer program!");
             System.out.println("Please select from options below: ");
-            System.out.println("(A)dd a movie to the collection");
-            System.out.println("(D)isplay movie collection");
-            System.out.println("(S)earch movie collection");
-            System.out.println("(O)pposite order display");
-            System.out.println("(Q)uit the program");
+            System.out.println("(a)dd a movie to the collection");
+            System.out.println("(d)isplay movie collection");
+            System.out.println("(s)earch movie collection");
+            System.out.println("(r)emove");
+            System.out.println("(q)uit the program");
             userChoice = userSelection.nextLine();
 
             if (userChoice.equals("a")) {
@@ -28,8 +29,12 @@ public class Driver {
 
             }
             if (userChoice.equals("s")) {
+                // search movie list
+                aManager.searchMovie();
             }
-            if (userChoice.equals("o")) {
+            if (userChoice.equals("r")) {
+                // removes movie from list
+                aManager.removeMovie();
             }
         } while (!userChoice.equals("q"));
 
