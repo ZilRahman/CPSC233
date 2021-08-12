@@ -163,23 +163,23 @@ public class Manager {
     // recursive function called from oppositeDisplay()
     public void displayAndRecursive(MovieNode temp, int count) {
 
-        // Stop when end of list is reached
-        if (temp == null) {
-            return;
+        // check if next is null or not
+        // if next is null, dont call it
+        // print myself
+
+        if (temp.getNext() != null) {
+            count++;
+            displayAndRecursive(temp.getNext(), count);
+
         }
 
-        else {
-            // Display data and move onto next element
-            System.out.println();
-            System.out.println(temp.getData().getMovieName());
-            temp.getData().getCastMembers();
-            System.out.println(temp.getData().getGenre());
-            System.out.println(temp.getData().getRating());
-            System.out.println("************");
-            temp = temp.getNext(); // get address of next node
-            count++;
-            displayAndRecursive(temp, count); // recursive call is last call: tail recursion
-        }
+        // print movie details here
+        System.out.println();
+        System.out.println(temp.getData().getMovieName());
+        temp.getData().getCastMembers();
+        System.out.println(temp.getData().getGenre());
+        System.out.println(temp.getData().getRating());
+        System.out.println("************");
 
     }
 }
